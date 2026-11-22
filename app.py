@@ -36,7 +36,7 @@ with st.sidebar:
     st.divider()
     st.caption("Try an example")
     for i, example in enumerate(EXAMPLES):
-        if st.button(example, key=f"ex{i}", use_container_width=True):
+        if st.button(example, key=f"ex{i}", width="stretch"):
             st.session_state["question"] = example
             st.session_state["auto_run"] = True
 
@@ -81,7 +81,7 @@ if result:
         c3.metric("Retries used", result.get("retry_count", 0))
         c4.metric("Total time", f"{result.get('elapsed_seconds', 0) * 1000:.0f} ms")
         if attempts:
-            st.dataframe(pd.DataFrame(attempts), use_container_width=True, hide_index=True)
+            st.dataframe(pd.DataFrame(attempts), width="stretch", hide_index=True)
     with st.expander("Self-correction & guardrail log", expanded=bool(result.get("retry_count")) or status == "blocked"):
         for line in result.get("logs", []):
             st.text(f"• {line}")
@@ -90,13 +90,13 @@ if result:
     if status == "success":
         df = to_dataframe(result["db_result"])
         st.subheader("Results")
-        st.dataframe(df, use_container_width=True, hide_index=True)
+        st.dataframe(df, width="stretch", hide_index=True)
 
         spec = suggest_chart(df)
         if spec:
             st.subheader("Chart")
             kind = st.radio("Chart type", CHART_TYPES, index=CHART_TYPES.index(spec["type"]),
                             horizontal=True, key=f"kind_{hash(result['generated_sql'])}")
-            st.plotly_chart(build_figure(df, {**spec, "type": kind}), use_container_width=True)
+            st.plotly_chart(build_figure(df, {**spec, "type": kind}), width="stretch")
         else:
             st.caption("No chartable numeric data in this result.")
