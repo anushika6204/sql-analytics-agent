@@ -1,10 +1,14 @@
 """Shared fixtures: an isolated seeded SQLite DB and scriptable fake LLMs."""
 from __future__ import annotations
 
+import logging
 import sys
 from pathlib import Path
 
 import pytest
+
+# Streamlit warns about a missing ScriptRunContext when AppTest runs in bare mode; it is expected.
+logging.getLogger("streamlit.runtime.scriptrunner_utils.script_run_context").setLevel(logging.ERROR)
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
