@@ -1,0 +1,12 @@
+# NeMo Guardrails configuration.
+# The only rail used is an *input* rail that screens raw user text before it can
+# reach the SQL-generating LLM. The check itself is a custom action (actions.py).
+models:
+  - type: main
+    engine: openai
+    model: gpt-4o-mini
+
+rails:
+  input:
+    flows:
+      - check user input safety

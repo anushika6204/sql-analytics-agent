@@ -1,0 +1,8 @@
+define subflow check user input safety
+  $allowed = execute check_input_safety
+  if not $allowed
+    bot refuse malicious input
+    stop
+
+define bot refuse malicious input
+  "Security warning: your request looks like a malicious or unsafe input and was blocked."
