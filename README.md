@@ -2,7 +2,7 @@
 
 A text-to-SQL analytics agent built with **LangGraph**, **SQLAlchemy**, an **AST-based SQL safety filter** (sqlglot), **NeMo Guardrails**, and a **Streamlit + Plotly** dashboard. It answers plain-English questions against a database, automatically repairs queries that fail (self-correction loop, max 3 retries), and refuses anything that is not a read-only `SELECT`.
 
-- **Repository**: `[Insert URL]`
+- **Repository**: https://github.com/anushika6204/sql-analytics-agent
 
 ## Architecture
 
