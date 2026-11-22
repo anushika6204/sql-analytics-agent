@@ -1,0 +1,21 @@
+# Core agent stack
+langgraph>=0.2
+langchain-openai>=0.2
+langchain-core>=0.3
+sqlalchemy>=2.0
+sqlglot>=25.0
+nemoguardrails>=0.10
+
+# UI
+streamlit>=1.35
+plotly>=5.20
+pandas>=2.0
+
+# Config
+python-dotenv>=1.0
+
+# Optional: PostgreSQL driver (only if DATABASE_URL points to Postgres)
+# psycopg2-binary>=2.9
+
+# Testing
+pytest>=8.0
